@@ -1,6 +1,17 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
+
+const DB="mongodb+srv://cse18107:cse18107@cluster0.6uonr.mongodb.net/personal_database?retryWrites=true&w=majority";
+
+mongoose.connect(DB,{
+    useNewUrlParser:true
+}).then(con=>{
+    console.log('successfully connected with database');
+}).catch(err=>{
+    console.log(err);
+})
 
 app.get('/',(req,res)=>{
     res.status(200).json({
