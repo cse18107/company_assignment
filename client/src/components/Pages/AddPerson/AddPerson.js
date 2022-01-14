@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "./AddPerson.css";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import logo from "../../../image/personal-information.png";
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const AddPerson = () => {
-  const [person, setPerson] = useState({});
+  const [open, setOpen] = useState(false);
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(true);
   const [email, setEmail] = useState("");
@@ -12,6 +19,18 @@ const AddPerson = () => {
   const [validPhone, setValidPhone] = useState(true);
   const [address, setAddress] = useState("");
   const [validAddress, setValidAddress] = useState(true);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const setUserNameHandler = (e) => {
     const username = e.target.value;
@@ -66,23 +85,26 @@ const AddPerson = () => {
 
     setAddress(e.target.value);
   };
-  const submitHandler = async() => {
+
+  const submitHandler = async () => {
     console.log(username + " " + email + " " + phone + " " + address);
 
-    try{
-      const res = await fetch('http://localhost:4000/persons',{
-        method:'POST',
-        body:JSON.stringify({username,email,phone,address}),
-        headers:{
-          'Content-Type':'application/json'
-        }
-      })
-      const data =await res.json();
-      console.log(data);
-    }catch(err){
+    try {
+      if (username && email && phone && address) {
+        const res = await fetch("http://localhost:4000/persons", {
+          method: "POST",
+          body: JSON.stringify({ username, email, mobile: phone, address }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await res.json();
+        console.log(data);
+      }
+    } catch (err) {
       console.log(err);
     }
-
+    handleClick();
     setUsername("");
     setEmail("");
     setPhone("");
@@ -105,6 +127,11 @@ const AddPerson = () => {
 
   return (
     <div className="add-person-body">
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          This is a success message!
+        </Alert>
+      </Snackbar>
       <div className="add-person-container">
         <div className="add-person-content">
           <div className="add-person-logo">
@@ -159,7 +186,13 @@ const AddPerson = () => {
             />
           </div>
           <div className="submit-cancel__button">
-            <button className="button submit" onClick={submitHandler}>
+            <button
+              type="button"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              className="button submit btn btn-primary"
+              onClick={submitHandler}
+            >
               Submit
             </button>
             <button className="button cancel" onClick={cancelHandler}>
