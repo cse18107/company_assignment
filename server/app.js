@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const personsRouter = require('./routers/personsRouters');
+const adminRouter = require('./routers/adminRouters');
 const app = express();
 
 
@@ -20,6 +21,7 @@ mongoose.connect(DB,{
 });
 
 app.use('/',personsRouter);
+app.use('/admin',adminRouter);
 
 
 

@@ -3,7 +3,7 @@ import './LoggedInNavbar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../../image/man (1).png';
 
-const LoggedInNavbar=()=> {
+const LoggedInNavbar=(props)=> {
     return (
         <div className="navbar-body">
             <div className="navbar-container">
@@ -17,6 +17,7 @@ const LoggedInNavbar=()=> {
                     <div className="navbar-right">
                         <NavLink to='/' className={`navbar-link ${(isActive)=>isActive?'active':'inActive'}`}>Add Person</NavLink>
                         <NavLink to='/show-persons' className={`navbar-link ${(isActive)=>isActive?'active':'inActive'}`}>Show Person</NavLink>
+                        <button   className="log-out-button" onClick={()=>{props.logOut()}}>Log Out</button>
                     </div>
                 </div>
             </div>

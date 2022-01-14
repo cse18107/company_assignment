@@ -17,23 +17,33 @@
     align-items: center;
 }
 .navbar-left{
-    width: 76%;
+    width: 65%;
     height: 100%;
     display: flex;
     /* justify-content: center; */
     align-items: center;
 }
 .navbar-left-content{
-    width: 28%;
+    width: 35%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.log-out-button{
+    padding: 18px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    outline: none;
+    color:rgb(255, 123, 0);
+    background-color: rgb(251, 255, 9);
 }
 .navbar-logo{
     width: 50px;
 }
 .navbar-right{
-    width: 24%;
+    width: 35%;
     height: 100%;
     display: flex;
     justify-content: space-between;

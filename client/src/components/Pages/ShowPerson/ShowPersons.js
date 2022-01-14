@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./ShowPersons.css";
 import deleteLogo from "../../../image/delete (1).png";
+import { useNavigate } from "react-router-dom";
 
 const ShowPersons = () => {
   const [persons, setPersons] = useState([]);
+  const navigate = useNavigate();
 
   const getAllData = async () => {
     try {
@@ -31,6 +33,7 @@ const ShowPersons = () => {
         });
         // const data = await res.json();
         //getAllData();
+        navigate('/')
       }catch(err){
           console.log(err);
       }
@@ -38,7 +41,8 @@ const ShowPersons = () => {
 
   useEffect(() => {
     getAllData();
-  }, [persons]);
+    
+  }, []);
 
   return (
     <div className="show-person-body">
