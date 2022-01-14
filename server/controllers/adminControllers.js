@@ -17,7 +17,7 @@ exports.getAdmin = async (req, res) => {
   try {
     token = jwt.sign(
       { email: admin.email, password: admin.password },
-      "0dsdfexekaLks-sd00092dfjL/wefhsifej",
+      `${process.env.SECRET_KEY}`,
       { expiresIn: 300 }
     );
   } catch (err) {

@@ -37,7 +37,7 @@ const LogInPage = (props) => {
       props.admin.email === email &&
       props.token
     ) {
-      const tokenExpirationDate = new Date(new Date().getTime() + 5000);
+      const tokenExpirationDate = new Date(new Date().getTime() + 1000 * 60 * 5);
       localStorage.setItem(
         "token",
         JSON.stringify({

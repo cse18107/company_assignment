@@ -17,18 +17,20 @@
     align-items: center;
 }
 .navbar-left{
-    width: 65%;
+    width: 900px;
     height: 100%;
     display: flex;
     /* justify-content: center; */
     align-items: center;
 }
 .navbar-left-content{
-    width: 35%;
+    /* width: 35%; */
+    width: 290px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .log-out-button{
     padding: 18px;
     font-size: 1.2rem;
@@ -43,7 +45,7 @@
     width: 50px;
 }
 .navbar-right{
-    width: 35%;
+    width: 600px;
     height: 100%;
     display: flex;
     justify-content: space-between;
