@@ -32,7 +32,7 @@ function App() {
 
   const getAdmin = async() =>{
     try{
-      const res = await fetch('http://localhost:4000/admin/',);
+      const res = await fetch('https://companyassignments.herokuapp.com/admin/',);
       const data = await res.json();
       // console.log(data);
       setAdmin(data.admin[0]);

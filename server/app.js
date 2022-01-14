@@ -20,6 +20,11 @@ mongoose.connect(DB,{
 }).catch(err=>{
     console.log(err);
 });
+app.get('/',(req,res)=>{
+    res.status(200).json({
+        message:success
+    })
+})
 
 app.use('/',personsRouter);
 app.use('/admin',adminRouter);

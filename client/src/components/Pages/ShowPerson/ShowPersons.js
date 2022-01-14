@@ -9,7 +9,7 @@ const ShowPersons = () => {
 
   const getAllData = async () => {
     try {
-      const res = await fetch("http://localhost:4000/persons", {
+      const res = await fetch("https://companyassignments.herokuapp.com/persons", {
         method: "GET",
         headers: {
           "Content-Type": "application",
@@ -25,7 +25,7 @@ const ShowPersons = () => {
 
   const deleteHandler = async(id) =>{
       try{
-        const res = await fetch(`http://localhost:4000/persons/${id}`,{
+        const res = await fetch(`https://companyassignments.herokuapp.com/persons/${id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json'

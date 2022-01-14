@@ -90,7 +90,7 @@ const AddPerson = () => {
 
     try {
       if (username && email && phone && address && phone.length === 10) {
-        const res = await fetch("http://localhost:4000/persons", {
+        const res = await fetch("https://companyassignments.herokuapp.com/persons", {
           method: "POST",
           body: JSON.stringify({ username, email, mobile: phone, address }),
           headers: {
