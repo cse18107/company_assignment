@@ -48,10 +48,7 @@
     border: 2px solid rgba(0, 0, 0, 0.719);
 } */
 
-.invalid{
-    border: 2px solid tomato;
-    background-color: rgba(255, 99, 71, 0.692);
-}
+
 .valid{
     /* border: 2px solid rgba(8, 255, 90, 0.986);
     background-color: rgba(71, 255, 95, 0.301); */
@@ -88,3 +85,8 @@
     background-color: rgba(255, 99, 71, 0.842);
 }
 
+.invalid{
+    background-color: rgba(255, 99, 71, 0.692) !important;
+    border: 2px solid tomato;
+   
+}

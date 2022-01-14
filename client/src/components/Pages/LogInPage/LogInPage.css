@@ -1,0 +1,79 @@
+.login-page-body {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-page-container {
+    width: 30%;
+    height: 80%;
+    box-shadow: 0px 7px 14px 3px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 7px 14px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 7px 14px 3px rgba(0, 0, 0, 0.75);
+}
+
+.login-page-content {
+    /* padding: 30px; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.login-page-fields{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.login-page-field{
+    width: 100%;
+    font-size: 1.2rem;
+    height: 80px;
+    display: flex;
+    flex-direction:column ;
+}
+.login-page-submit{
+    margin-bottom: 20px;
+}
+.login-page-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.login-page-button{
+    width: 40%;
+    font-size: 1.4rem;
+    color: white;
+    height: 60px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+}
+.login-page-submit{
+    background-color: rgb(117, 195, 0);
+}
+.login-page-submit:hover{
+    background-color: rgb(43, 153, 0);
+}
+.login-page-cancel{
+    background-color: tomato;
+}
+.login-page-cancel:hover{
+    background-color: rgb(255, 46, 9);
+}
+.login-page-input{
+    height: 50px;
+    margin-top: 10px;
+    font-size: 1.2rem;
+}
+.login-page-label{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: rgb(56, 56, 56);
+}
+

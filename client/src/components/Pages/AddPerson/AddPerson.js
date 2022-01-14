@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./AddPerson.css";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import logo from "../../../image/personal-information.png";
@@ -19,6 +18,7 @@ const AddPerson = () => {
   const [validPhone, setValidPhone] = useState(true);
   const [address, setAddress] = useState("");
   const [validAddress, setValidAddress] = useState(true);
+  const [dataIsValid, setDataIsValid] = useState(true);
 
   const handleClick = () => {
     setOpen(true);
@@ -64,8 +64,7 @@ const AddPerson = () => {
   const setPhoneHandler = (e) => {
     setValidPhone(true);
     if (
-      e.target.value.length > 10 ||
-      e.target.value.length < 10 ||
+      e.target.value.length !== 10 ||
       e.target.value.includes(" ")
     )
       setValidPhone(false);
@@ -90,7 +89,7 @@ const AddPerson = () => {
     console.log(username + " " + email + " " + phone + " " + address);
 
     try {
-      if (username && email && phone && address) {
+      if (username && email && phone && address && phone.length === 10) {
         const res = await fetch("http://localhost:4000/persons", {
           method: "POST",
           body: JSON.stringify({ username, email, mobile: phone, address }),
@@ -100,19 +99,15 @@ const AddPerson = () => {
         });
         const data = await res.json();
         console.log(data);
+        setDataIsValid(true);
+      } else {
+        setDataIsValid(false);
       }
     } catch (err) {
       console.log(err);
     }
     handleClick();
-    setUsername("");
-    setEmail("");
-    setPhone("");
-    setAddress("");
-    setValidUsername(true);
-    setValidAddress(true);
-    setValidPhone(true);
-    setValidEmail(true);
+    cancelHandler();
   };
   const cancelHandler = () => {
     setUsername("");
@@ -125,13 +120,24 @@ const AddPerson = () => {
     setValidEmail(true);
   };
 
+  const ShowMessage = (severity,message) =>{
+    return(
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity={`${severity}`} sx={{ width: "100%" }}>
+            {message}
+          </Alert>
+        </Snackbar>
+    );
+  }
+
   return (
     <div className="add-person-body">
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          This is a success message!
-        </Alert>
-      </Snackbar>
+      {dataIsValid && (
+        ShowMessage('success','User added successfully!')
+      )}
+      {!dataIsValid && (
+        ShowMessage('error','Data you have entered not valid!')
+      )}
       <div className="add-person-container">
         <div className="add-person-content">
           <div className="add-person-logo">
